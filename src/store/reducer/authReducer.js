@@ -10,6 +10,8 @@ const initialState = {
 const authSuccess = (state, action) => {
     return {
         ...state,
+        token: action.token,
+        activeUser: action.email,
         authenticated: true
     };
 };

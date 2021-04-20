@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import HomePage from '../components/HomePage/HomePage';
 import LoginPage from '../components/LoginPage/LoginPage';
 import RegistrationPage from '../components/RegistrationPage/RegistrationPage';
+import DashboardContainer from './DashboardContainer';
 
 class AuthContainer extends React.Component{
-
 
     authenticatedContainer = () => {
         return (
         <Switch>
-            <Route path="/" render={() => <div>Authentiacted</div>} />
+            <Route path="/" exact component={DashboardContainer} />
+            <Redirect to="/" />
         </Switch>
         );
     }

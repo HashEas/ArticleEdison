@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/action/errorActions';
 import axios from 'axios';
+import * as errorActions from '../../store/action/errorActions';
+import * as authActions from '../../store/action/authActions';
 
 const RegistrationPage = (props) => {
 
@@ -30,7 +31,11 @@ const RegistrationPage = (props) => {
             axios.post( 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDwQlLyIkSEZltbCjxfxxfDp6DMp06B3Sg',signUpUserInfo)
             .then( response => {
                 console.log( response.data );
-                alert("to do authenticated user" + response.data.idToken);
+                const userData = {
+                    token : response.data.idToken,
+                    email: registrationUser.email
+                };
+                props.dispatchLoginSuccess(userData);
             })
             .catch( error => {
                 props.dispatchShowError("Sorry Signup Failed");
@@ -80,8 +85,9 @@ const RegistrationPage = (props) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        dispatchShowError: (error) => dispatch({ type: actionTypes.SHOW_ERROR, error: error }),
-        dispatchHideError: (error) => dispatch({ type: actionTypes.HIDE_ERROR})
+        dispatchShowError: (error) => dispatch({ type: errorActions.SHOW_ERROR, error: error }),
+        dispatchHideError: (error) => dispatch({ type: errorActions.HIDE_ERROR}),
+        dispatchLoginSuccess: (user) => dispatch({ type: authActions.AUTH_SUCCESS, ...user}),
     }
 }
 
