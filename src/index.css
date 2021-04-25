@@ -177,7 +177,7 @@ a:hover {
   background: rgba(86,61,124,.15);
 }
 
-div.block:hover{
+a.block:hover{
   transform: scale(1.15);
   position: relative;
   z-index: 100;
@@ -214,4 +214,14 @@ div.block:hover{
     align-items: center;
     padding: 30px;
     color: #ffffff;
+}
+
+.article_new_btn{
+  color: #ffffff;
+  background: #0ed40e;
+  width: 50%;
+}
+
+.bg-color-ff{
+  background-color: #ffffff;
 }

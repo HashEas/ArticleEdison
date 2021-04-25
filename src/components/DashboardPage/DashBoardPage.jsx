@@ -2,21 +2,27 @@
 import React from 'react';
 import FooterBar from '../FooterBar/FooterBar';
 import HeaderBar from '../HeaderBar/HeaderBar';
-import ArticleJPG from '../../assets/article1.jpg'
+import { Link } from 'react-router-dom';
 
 const ArticlesPage = (props) => {
+    
     return (
         <div className="col-12 col-md-6 col-xl-6 text-white">
-            <div className="bg-white d-flex align-items-center justify-content-center h2 block">
+            <Link 
+                className="bg-white d-flex align-items-center justify-content-center h2 block"
+                to={{
+                    pathname: "/detail",
+                    state: { articleId: "-MYYosKyMSznjSpuVggV" }
+                  }}>
                 <div className="description row align-items-center justify-content-center">
                     <div className="col-12 col-md-12 col-xl-12">
                         The new common language will be more simple and regular than the existing European languages.
                     </div>
                 </div>
-                <a className="d-flex flex-column align-items-end block fill" href="">
+                <div className="d-flex flex-column align-items-end fill">
                     <img src={"data:image/png;base64," + props.article.img} alt="articleImage"/>
-                </a>
-            </div>
+                </div>
+            </Link>
         </div>
     );
 }

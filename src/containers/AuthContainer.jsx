@@ -5,12 +5,14 @@ import HomePage from '../components/HomePage/HomePage';
 import LoginPage from '../components/LoginPage/LoginPage';
 import RegistrationPage from '../components/RegistrationPage/RegistrationPage';
 import DashboardContainer from './DashboardContainer';
+import ArticleDetailsContainer from './ArticleDetailsContainer';
 
 class AuthContainer extends React.Component{
 
     authenticatedContainer = () => {
         return (
         <Switch>
+            <Route path="/detail" exact component={ArticleDetailsContainer} />
             <Route path="/" exact component={DashboardContainer} />
             <Redirect to="/" />
         </Switch>
